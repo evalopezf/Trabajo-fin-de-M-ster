@@ -3,4 +3,4 @@ Título: Genética y epigenética de retrotransposones SVA y sus implicaciones p
 Universidad de Murcia 
 
 Esquema workflow seguido en el análisis bioinformático.
-![Workflow](https://github.com/evalopezf/Trabajo-fin-de-M-ster/assets/153935665/260d665b-c99f-4e08-b864-6d383cdaa418)
+![workflow](https://github.com/evalopezf/Trabajo_fin_de_Master/assets/153935665/3a3ea4fc-6e45-4cac-af12-fcf11906977d)
