@@ -2,7 +2,7 @@
 Título: Genética y epigenética de retrotransposones SVA y sus implicaciones patogénicas evaluadas mediante secuenciación con nanoporos. 
 Universidad de Murcia 
 
-Esquema workflow seguido en el análisis bioinformático.
+## Workflow seguido en el análisis bioinformático.
 ![workflow](https://github.com/evalopezf/Trabajo_fin_de_Master/assets/153935665/3a3ea4fc-6e45-4cac-af12-fcf11906977d)
 
 ## Introducción 
@@ -15,5 +15,5 @@ Se utilizo secuenciación con nanoporos mediante el dispositivo PromethION P2, p
 ## Resultados
 La secuenciación reveló una presencia elevada y diversa de retrotransposones SVA en el genoma del paciente, con una inserción específica en SERPINC1. La caracterización de esta inserción confirmó su identidad como SVA-F1, con peculiaridades estructurales únicas que incluyen secuencias derivadas del gen MAST2. También se obtuvieron otras posibles inserciones de SVA-F1 en el genoma del paciente pudiendo comparar sus perfiles de metilación.
 
-## Conclusión
+## Conclusiones
 La secuenciación con nanoporos demostró ser una herramienta poderosa para el estudio detallado de ETs, revelando no solo la estructura y distribución de los retrotransposones SVA sino también proporcionando una comprensión superficial de su regulación epigenética. Los hallazgos subrayan la importancia de los ETs en la patogenicidad y la necesidad de continuar desarrollando tecnologías que permitan un análisis más eficiente y detallado de estos elementos, potencialmente llevando a nuevas estrategias diagnósticas y terapéuticas.
