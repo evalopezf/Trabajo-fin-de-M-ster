@@ -1,27 +1,40 @@
-outdir="/pool_sas/crh/analysis/twins/basecall_SUP"
+#!/bin/bash
+#
+#SBATCH -p [nombre_de_la_particion]       # Partición donde se ejecutará el trabajo
+#SBATCH --gres=gpu:1                      # Solicita una GPU
+#SBATCH --chdir=[directorio_de_trabajo]   # Directorio de trabajo
+#SBATCH -J basecalling_twins              # Nombre del trabajo
+#SBATCH --cpus-per-task=4                 # Número de CPUs asignadas (máximo 96)
+#SBATCH -o [directorio_de_salida_logs]/%x_%j.out  # Archivo de salida para los logs
 
-CUDA_VISIBLE_DEVICES=0 /home/evalo/dorado-0.7.0-linux-x64/bin/dorado basecaller \
+# Cargar entornos
+source $HOME/.bashrc
+mamba activate samtools
 
-/home/evalo/models_dorado/dna_r10.4.1_e8.2_400bps_sup@v4.2.0 \
 
-/pool_sas/crh/raw_data/twins/21-061_pod5/2023-09_GEMELOS_21-061.pod5 \
+outdir="directorio_de_salida_para_archivos"
+input_pod5="ruta_del_archivo_pod5"
+reference="ruta_del_archivo_de_referencia_genomica"
+dorado_bin="ruta_del_ejecutable_dorado"
+model_r10="ruta_del_modelo_r10_para_basecalling"
+mod_base_model="ruta_del_modelo_de_bases_modificadas"
+output_bam="ruta_del_archivo_bam_de_salida"
+error_log="ruta_del_archivo_de_log_de_errores"
+sorted_bam="ruta_del_archivo_bam_ordenado_de_salida"
 
---reference /home/evalo/References/hg38.fa \
+# Ejecutar Dorado basecaller
+CUDA_VISIBLE_DEVICES=0 $dorado_bin basecaller \
+    $model_r10 \
+    $input_pod5 \
+    --reference $reference \
+    --modified-bases-models $mod_base_model \
+    --secondary no \
+    --min-qscore 10 > $output_bam 2> $error_log
 
---modified-bases-models /home/evalo/models_dorado/dna_r10.4.1_e8.2_400bps_sup@v4.2.0_5mCG_5hmCG@v3.1 \
-
---secondary no \
-
---min-qscore 10 > $outdir/2023-09_GEMELOS_21-061.bam 2>$outdir/2023-09_GEMELOS_21-061_error.txt
-
+# Validación y procesamiento posterior
 if [ $? -eq 0 ]; then
-
-samtools sort $outdir/2023-09_GEMELOS_21-061.bam -o $outdir/2023-09_GEMELOS_21-061_sorted.bam
-
-samtools index $outdir/2023-09_GEMELOS_21-061_sorted.bam
-
+    samtools sort $output_bam -o $sorted_bam
+    samtools index $sorted_bam
 else
-
-echo "dorado basecaller failed for sample 2023-09_GEMELOS_21-061, check $outdir/2023-09_GEMELOS_21-061_error.txt for details"
-
+    echo "dorado basecaller failed for sample 2023-09_GEMELOS_21-165. Check $error_log for details"
 fi
