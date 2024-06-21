@@ -13,7 +13,7 @@ Genera las figuras y df para la visualización de resultados
 
 Para ejecutar `meth_flank_ins.sh`, es necesario proporcionar una serie de argumentos específicos. En este caso, se utiliza `run_methyl.sh` para lanzar `meth_flank_ins.sh` en paralelo con GNU Parallel.
 
-Descripción de los Argumentos/example_args_list.txt
+Descripción de los Argumentos (example_args_list.txt)
 - arg1,arg2,arg3,arg4: Ruta a los pileups de las muestras.
 - arg5: chrom
 - arg6: range-start
