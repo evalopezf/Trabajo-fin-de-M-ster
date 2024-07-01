@@ -50,7 +50,7 @@ def analyze_coordinate(chrom, start, extend=100000):
 
     return chrom, start, repeat_status, gene_status, nearest_gene, distance_to_nearest_gene
 
-# Ruta al archivo de resultados BLAST
+
 results_file = r"C:\Users\evalo\OneDrive\Escritorio\Master_Bioinformatica\TFM\results2_blast.txt"
 
 if not os.path.exists(results_file):
@@ -95,7 +95,7 @@ if 'qcovs' in grouped.columns:
 grouped_reset = grouped.reset_index()
 ids = list(grouped_reset['sseqid'].unique())
 
-# Verificar las coordenadas obtenidas
+
 print("Coordinates obtained from BLAST results:")
 print(ids)
 
